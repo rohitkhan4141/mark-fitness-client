@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Hero from "../../components/Hero/Hero";
 import ServiceCard from "../../components/ServiceCard/ServiceCard";
 
@@ -23,7 +24,9 @@ const Home = () => {
           ))}
         </div>
         <div className='flex justify-center items-center mt-10'>
-          <button className='btn btn-primary'>Show More</button>
+          <Link to='/services' className='btn btn-accent text-white'>
+            Show More
+          </Link>
         </div>
       </div>
     </div>
