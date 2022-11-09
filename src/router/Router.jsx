@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
+import Four04 from "../Pages/Four04/Four04";
 import Home from "../Pages/Home/Home";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import Register from "../Pages/Register/Register";
@@ -58,6 +59,10 @@ export const route = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "*",
+        element: <Four04 />,
       },
     ],
   },

@@ -112,6 +112,7 @@ const Register = () => {
                 </Link>
               </label>
             </div>
+            <div className='text-lg text-red-400'>{error}</div>
             <div className='form-control mt-6'>
               <button className='btn btn-primary'>Login</button>
             </div>
