@@ -21,6 +21,9 @@ const Navbar = () => {
       <li className='mx-3'>
         <Link to='/myreviews'>My Reviews</Link>
       </li>
+      <li className='mx-3'>
+        <Link to='/addservices'>Add Service</Link>
+      </li>
       {user ? (
         <>
           <div
