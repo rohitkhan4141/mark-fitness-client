@@ -5,6 +5,7 @@ import { GiMuscleUp } from "react-icons/gi";
 import { IoIosBody } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Hero from "../../components/Hero/Hero";
+import Plan from "../../components/Plan/Plan";
 import ServiceCard from "../../components/ServiceCard/ServiceCard";
 
 // GiMuscleUp
@@ -57,6 +58,16 @@ const Home = () => {
           <Link to='/services' className='btn btn-accent text-white'>
             Show More
           </Link>
+        </div>
+      </div>
+      <div>
+        <h2 className='text-4xl text-center py-16 text-white'>
+          Get A Custom Plan
+        </h2>
+        <div className='w-1/2 mx-auto'>
+          <div>
+            <Plan />
+          </div>
         </div>
       </div>
     </div>
