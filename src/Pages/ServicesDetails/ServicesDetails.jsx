@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import Review from "../../components/Review/Review";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
@@ -55,6 +56,10 @@ const ServicesDetails = () => {
 
   return (
     <div className='mb-10'>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>{service?.name}</title>
+      </Helmet>
       <div className='w-10/12 mx-auto '>
         <div>
           <div className='flex flex-col gap-10 items-center lg:flex-row lg:justify-evenly lg:shadow-md pt-20 lg:pb-10 pb-16 mb-16 rounded-md text-white'>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { FaDumbbell } from "react-icons/fa";
 import { GiMuscleUp } from "react-icons/gi";
 import { IoIosBody } from "react-icons/io";
@@ -21,6 +22,10 @@ const Home = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Home</title>
+      </Helmet>
       <Hero />
       <div className='w-10/12 mx-auto my-20'>
         <h2 className='text-4xl text-center py-16 text-white'>

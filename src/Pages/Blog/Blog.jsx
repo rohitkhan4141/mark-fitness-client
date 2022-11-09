@@ -7,10 +7,15 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
   return (
     <div className='w-10/12 mx-auto mt-10'>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Blog</title>
+      </Helmet>
       <h1 className='text-4xl text-center mb-10'>Blog</h1>
       <Accordion>
         <AccordionItem>

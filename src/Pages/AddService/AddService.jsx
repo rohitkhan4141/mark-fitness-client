@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import Form from "../../components/Form/Form";
 
 const AddService = () => {
@@ -34,6 +35,10 @@ const AddService = () => {
   };
   return (
     <div className='w-1/2 mx-auto mt-12'>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Add Services</title>
+      </Helmet>
       <h1 className='text-5xl text-center mb-10 text-white'>Add User</h1>
       <Form
         button={"add User"}

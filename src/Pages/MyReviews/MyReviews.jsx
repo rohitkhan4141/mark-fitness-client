@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import SingleReviewInfo from "../../components/SingleReviewInfo/SingleReviewInfo";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
@@ -61,6 +62,10 @@ const MyReviews = () => {
   };
   return (
     <div className='w-10/12 mx-auto mt-10'>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>My Reviews</title>
+      </Helmet>
       {personalReviews.length === 0 ? (
         <p className='text-4xl text-center mt-20'>No reviews</p>
       ) : (

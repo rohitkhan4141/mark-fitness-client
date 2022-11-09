@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
@@ -48,6 +49,10 @@ const Register = () => {
   };
   return (
     <div className='hero min-h-screen bg-base-200'>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Register</title>
+      </Helmet>
       <div className='hero-content flex-col w-10/12 mx-auto'>
         <div className='text-center lg:text-left'>
           <h1 className='text-5xl font-bold mb-3'>Register!</h1>
