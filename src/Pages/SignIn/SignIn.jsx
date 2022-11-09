@@ -16,7 +16,7 @@ const SignIn = () => {
     const password = form.password.value;
     login(email, password)
       .then((user) => {
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assingment-11-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
