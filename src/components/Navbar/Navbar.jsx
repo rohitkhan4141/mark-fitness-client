@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link to='/'>Home</Link>
       </li>
       <li className='mx-3'>
-        <Link to='/protected'>Protected</Link>
+        <Link to='/myreviews'>My Reviews</Link>
       </li>
       {user ? (
         <>

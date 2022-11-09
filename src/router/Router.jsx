@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "../components/Navbar/ProtectedRoute/ProtectedRoute";
 import Main from "../layout/Main";
 import Home from "../Pages/Home/Home";
+import MyReviews from "../Pages/MyReviews/MyReviews";
 import Register from "../Pages/Register/Register";
 import Services from "../Pages/Services/Services";
 import ServicesDetails from "../Pages/ServicesDetails/ServicesDetails";
@@ -38,10 +38,10 @@ export const route = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/protected",
+        path: "/myreviews",
         element: (
           <PrivateRoute>
-            <ProtectedRoute />
+            <MyReviews />
           </PrivateRoute>
         ),
       },

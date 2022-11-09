@@ -12,7 +12,9 @@ const Review = ({ review, user }) => {
           </div>
           <h3>{review?.name}</h3>
         </div>
-        <div>{review?.review}</div>
+        <div>
+          <p>{review?.review}</p>
+        </div>
       </div>
       <div className='divider'></div>
     </div>
