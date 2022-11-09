@@ -1,21 +1,23 @@
 import React from "react";
+import { MdOutlineSystemUpdate } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-const SingleReviewInfo = ({ singleReview }) => {
+const SingleReviewInfo = ({ singleReview, deleteUser }) => {
   return (
     <tr>
       <th>
         <label>
           <button
-            // onClick={() => deleteUser(user._id)}
+            onClick={() => deleteUser(singleReview._id)}
             className='btn btn-error'
           >
             X
           </button>
         </label>
         <label>
-          {/* <Link to={`/updateuser/${user._id}`} className='btn btn-accent mx-2'>
+          <Link className='btn btn-accent mx-2'>
             <MdOutlineSystemUpdate />
-          </Link> */}
+          </Link>
         </label>
       </th>
       <td>
