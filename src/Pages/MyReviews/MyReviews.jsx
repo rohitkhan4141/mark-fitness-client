@@ -3,7 +3,6 @@ import SingleReviewInfo from "../../components/SingleReviewInfo/SingleReviewInfo
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const MyReviews = () => {
-  // const users = useLoaderData();
   const { user } = useContext(AuthContext);
   const [personalReviews, setPersonalReviews] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
@@ -44,6 +43,22 @@ const MyReviews = () => {
         .catch((err) => console.log(err));
     }
   };
+
+  const updateHandler = (id, updateReview) => {
+    fetch(`https://assingment-11-server.vercel.app/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ review: updateReview }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setIsFetching(!isFetching);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className='w-10/12 mx-auto mt-10'>
       {personalReviews.length === 0 ? (
@@ -57,7 +72,6 @@ const MyReviews = () => {
                 <th>Services</th>
                 <th>Review</th>
                 <th>Email</th>
-                {/* <th>Salary</th> */}
               </tr>
             </thead>
             <tbody>
@@ -66,6 +80,7 @@ const MyReviews = () => {
                   key={singleReview._id}
                   singleReview={singleReview}
                   deleteUser={deleteUser}
+                  updateHandler={updateHandler}
                 />
               ))}
             </tbody>

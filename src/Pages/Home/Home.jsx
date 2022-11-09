@@ -17,6 +17,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
+
       <div>
         <div className='w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-self-center self-center justify-items-center'>
           {services.map((singleService) => (
