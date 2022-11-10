@@ -30,7 +30,6 @@ const SignIn = () => {
           .then((data) => {
             if (data.token) {
               localStorage.setItem("jwt-token", data.token);
-              setLoading(false);
               form.reset();
               setError("");
               navigate(from, { replace: true });
@@ -57,7 +56,6 @@ const SignIn = () => {
           .then((data) => {
             if (data.token) {
               localStorage.setItem("jwt-token", data.token);
-              setLoading(false);
               form.reset();
               setError("");
               navigate(from, { replace: true });
