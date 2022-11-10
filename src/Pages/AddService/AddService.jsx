@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Form from "../../components/Form/Form";
 
 const AddService = () => {
@@ -34,19 +34,21 @@ const AddService = () => {
     setService(newService);
   };
   return (
-    <div className='w-1/2 mx-auto mt-12'>
-      <Helmet>
-        <meta charSet='utf-8' />
-        <title>Add Services</title>
-      </Helmet>
-      <h1 className='text-5xl text-center mb-10 text-white'>Add User</h1>
-      <Form
-        button={"add User"}
-        formHandler={formHandler}
-        onchangeHandler={onchangeHandler}
-        placeHold={false}
-      />
-    </div>
+    <HelmetProvider>
+      <div className='w-full px-10 lg:w-1/2 mx-auto mt-12'>
+        <Helmet>
+          <meta charSet='utf-8' />
+          <title>Add Services</title>
+        </Helmet>
+        <h1 className='text-5xl text-center mb-10 text-white'>Add Service</h1>
+        <Form
+          button={"add User"}
+          formHandler={formHandler}
+          onchangeHandler={onchangeHandler}
+          placeHold={false}
+        />
+      </div>
+    </HelmetProvider>
   );
 };
 

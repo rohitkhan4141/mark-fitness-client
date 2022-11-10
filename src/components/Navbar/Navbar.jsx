@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { BsFillPersonFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
@@ -21,30 +20,15 @@ const Navbar = () => {
       <li className='mx-3'>
         <Link to='/blog'>Blog</Link>
       </li>
-      <li className='mx-3'>
-        <Link to='/myreviews'>My Reviews</Link>
-      </li>
-      <li className='mx-3'>
-        <Link to='/addservices'>Add Service</Link>
-      </li>
+
       {user ? (
         <>
-          <div
-            className='tooltip tooltip-bottom'
-            data-tip={
-              user?.displayName ? user?.displayName : "Havent Share Name"
-            }
-          >
-            {user?.photoURL ? (
-              <img
-                className='w-10 h-10 rounded-full mx-4'
-                src={user?.photoURL ? user.photoURL : ""}
-                alt=''
-              />
-            ) : (
-              <BsFillPersonFill />
-            )}
-          </div>
+          <li className='mx-3'>
+            <Link to='/myreviews'>My Reviews</Link>
+          </li>
+          <li className='mx-3'>
+            <Link to='/addservices'>Add Service</Link>
+          </li>
           <button onClick={handleLogout} className='btn btn-ghost'>
             logout
           </button>
@@ -88,7 +72,9 @@ const Navbar = () => {
             {navlink}
           </ul>
         </div>
-        <a className='btn btn-ghost normal-case text-xl'>daisyUI</a>
+        <a className='btn btn-ghost normal-case text-3xl text-teal-300'>
+          Mark Fitness
+        </a>
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal p-0'>{navlink}</ul>

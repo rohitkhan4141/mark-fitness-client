@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import SingleReviewInfo from "../../components/SingleReviewInfo/SingleReviewInfo";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
@@ -7,6 +7,7 @@ const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [personalReviews, setPersonalReviews] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -20,6 +21,7 @@ const MyReviews = () => {
       .then((res) => res.json())
       .then((data) => {
         setPersonalReviews(data);
+        setLoading(false);
         console.log(data);
       })
       .catch((err) => console.log(err));
@@ -61,38 +63,45 @@ const MyReviews = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className='w-10/12 mx-auto mt-10'>
-      <Helmet>
-        <meta charSet='utf-8' />
-        <title>My Reviews</title>
-      </Helmet>
-      {personalReviews.length === 0 ? (
-        <p className='text-4xl text-center mt-20'>No reviews</p>
-      ) : (
-        <div className='overflow-x-auto w-full'>
-          <table className='table w-full'>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Services</th>
-                <th>Review</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {personalReviews.map((singleReview) => (
-                <SingleReviewInfo
-                  key={singleReview._id}
-                  singleReview={singleReview}
-                  deleteUser={deleteUser}
-                  updateHandler={updateHandler}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
+    <HelmetProvider>
+      <div className='w-10/12 mx-auto mt-10'>
+        <Helmet>
+          <meta charSet='utf-8' />
+          <title>My Reviews</title>
+        </Helmet>
+        {loading && (
+          <div className=' w-48 mt-20 mx-auto'>
+            <progress className='progress w-56'></progress>
+          </div>
+        )}
+        {personalReviews.length === 0 ? (
+          <p className='text-4xl text-center mt-20'>No reviews</p>
+        ) : (
+          <div className='overflow-x-auto w-full'>
+            <table className='table w-full'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Services</th>
+                  <th>Review</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                {personalReviews.map((singleReview) => (
+                  <SingleReviewInfo
+                    key={singleReview._id}
+                    singleReview={singleReview}
+                    deleteUser={deleteUser}
+                    updateHandler={updateHandler}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </HelmetProvider>
   );
 };
 
