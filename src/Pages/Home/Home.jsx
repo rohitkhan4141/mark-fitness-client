@@ -16,7 +16,6 @@ const Home = () => {
     fetch("https://assingment-11-server.vercel.app/services-home")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setServices(data);
       })
       .catch((err) => console.log(err));

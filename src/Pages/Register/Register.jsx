@@ -31,17 +31,33 @@ const Register = () => {
           .then((data) => {
             if (data.token) {
               localStorage.setItem("jwt-token", data.token);
+              handleUpdateUserProfile(name, photoUrl);
               form.reset();
               setError("");
               navigate("/");
             }
           });
+
+        // const user = userdata.user;
+        // form.reset();
+        // setError("");
+        // handleUpdateUserProfile(name, photoUrl);
+        // navigate("/");
       })
       .catch((err) => {
         setError(err.message);
       });
   };
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
 
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <HelmetProvider>
       <div>

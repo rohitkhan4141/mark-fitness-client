@@ -28,7 +28,7 @@ const Services = () => {
             <progress className='progress w-56'></progress>
           </div>
         ) : (
-          <div className='w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-y-10 place-self-center self-center justify-items-center'>
+          <div className='w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 place-self-center self-center justify-items-center'>
             {services.map((singleService) => (
               <ServiceCard key={singleService._id} service={singleService} />
             ))}

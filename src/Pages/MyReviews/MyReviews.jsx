@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import SingleReviewInfo from "../../components/SingleReviewInfo/SingleReviewInfo";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
-
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [personalReviews, setPersonalReviews] = useState([]);
@@ -22,7 +23,6 @@ const MyReviews = () => {
       .then((data) => {
         setPersonalReviews(data);
         setLoading(false);
-        console.log(data);
       })
       .catch((err) => console.log(err));
   }, [isFetching]);
@@ -38,9 +38,8 @@ const MyReviews = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.deletedCount > 0) {
-            alert("Successfully deleted user");
+            toast("Successfully deleted review");
             setIsFetching(!isFetching);
           }
         })
@@ -58,47 +57,58 @@ const MyReviews = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setIsFetching(!isFetching);
+        if (data.acknowledged) {
+          toast("Successfully updated review");
+          setIsFetching(!isFetching);
+        }
       })
       .catch((err) => console.log(err));
   };
+
+  let render;
+  if (personalReviews.length === 0) {
+    render = <p className='text-4xl text-center mt-20'>No reviews</p>;
+  } else {
+    render = (
+      <div className='overflow-x-auto w-full'>
+        <table className='table w-full'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Services</th>
+              <th>Review</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {personalReviews.map((singleReview) => (
+              <SingleReviewInfo
+                key={singleReview._id}
+                singleReview={singleReview}
+                deleteUser={deleteUser}
+                updateHandler={updateHandler}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
   return (
     <HelmetProvider>
+      <ToastContainer />
       <div className='w-10/12 mx-auto mt-10'>
         <Helmet>
           <meta charSet='utf-8' />
           <title>My Reviews</title>
         </Helmet>
-        {loading && (
+        {loading ? (
           <div className=' w-48 mt-20 mx-auto'>
             <progress className='progress w-56'></progress>
           </div>
-        )}
-        {personalReviews.length === 0 ? (
-          <p className='text-4xl text-center mt-20'>No reviews</p>
         ) : (
-          <div className='overflow-x-auto w-full'>
-            <table className='table w-full'>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Services</th>
-                  <th>Review</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                {personalReviews.map((singleReview) => (
-                  <SingleReviewInfo
-                    key={singleReview._id}
-                    singleReview={singleReview}
-                    deleteUser={deleteUser}
-                    updateHandler={updateHandler}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <>{render}</>
         )}
       </div>
     </HelmetProvider>

@@ -84,7 +84,7 @@ const ServicesDetails = () => {
             </div>
           </div>
         </div>
-        <div className='w-10/12 mx-auto lg:shadow-md pb-10 pl-10'>
+        <div className='w-10/12 mx-auto lg:shadow-md pb-10 pl-1 lg:pl-10 '>
           <h2 className='text-3xl pt-5 pb-10'>Reviews</h2>
           <div>
             {reviews.map((review) => (

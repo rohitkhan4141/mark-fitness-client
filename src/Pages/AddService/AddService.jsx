@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Form from "../../components/Form/Form";
 
 const AddService = () => {
   const [service, setService] = useState({});
   const formHandler = (event) => {
     event.preventDefault();
-    console.log(service);
     fetch("https://assingment-11-server.vercel.app/add-services", {
       method: "POST",
       headers: {
@@ -17,7 +18,7 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          alert("user Added Successfully");
+          toast("user Added Successfully");
           event.target.reset();
         }
       })
@@ -35,6 +36,7 @@ const AddService = () => {
   };
   return (
     <HelmetProvider>
+      <ToastContainer />
       <div className='w-full px-10 lg:w-1/2 mx-auto mt-12'>
         <Helmet>
           <meta charSet='utf-8' />
