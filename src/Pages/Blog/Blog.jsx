@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionItemButton,
   AccordionItemHeading,
-  AccordionItemPanel,
+  AccordionItemPanel
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -43,9 +43,7 @@ const Blog = () => {
                 performant for simple queries, and flexible thanks to its NoSQL
                 underpinnings. Great for hierarchical data storage, it also
                 supports familiar relational concepts from indexing, to
-                aggregation, to some measure of ACID compliance. Like MySQL, it
-                is compatible with many platforms and programming environments,
-                despite relative recency.
+                aggregation, to some measure of ACID compliance. 
               </p>
             </AccordionItemPanel>
           </AccordionItem>
@@ -65,9 +63,7 @@ const Blog = () => {
                 involved. The purpose of using JWT is not to hide data but to
                 ensure the authenticity of the data. JWT is signed and encoded,
                 not encrypted. JWT is a token based stateless authentication
-                mechanism. Since it is a client-side based stateless session,
-                server doesn't have to completely rely on a datastore(database)
-                to save session information.
+                mechanism.
               </p>
             </AccordionItemPanel>
           </AccordionItem>
